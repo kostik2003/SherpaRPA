@@ -1,0 +1,945 @@
+{
+  "Categories": [
+    {
+      "Name": "-",
+      "Elements": []
+    },
+    {
+      "Name": "Output",
+      "Elements": [
+        {
+          "Name": "$ErrorMessage",
+          "Description": "Last error message"
+        },
+		{
+          "Name": "$__RobotGuid",
+          "Description": "GUID of the robot, set in Robot Settings on the Orchestrator tab"
+        },
+		{
+          "Name": "$__RobotVersion",
+          "Description": "Robot version"
+        },
+		{
+          "Name": "$__RobotFullVersion",
+          "Description": "Full string with robot version"
+        },
+		{
+          "Name": "$__ExceptionBlockID",
+          "Description": "ID of the block where error occurred"
+        },
+		{
+          "Name": "$__JobGuid",
+          "Description": "GUID of the job currently performed by the robot"
+        }
+      ]
+    },
+    {
+      "Name": "-",
+      "Elements": []
+    },
+    {
+      "Name": "Constants and Special Symbols",
+      "Elements": [
+        {
+          "Name": "10",
+          "Description": "Numeric constant"
+        },
+        {
+          "Name": "10.34",
+          "Description": "Decimal numeric constant"
+        },
+        {
+          "Name": "\"Text\"",
+          "Description": "Text constant"
+        },
+        {
+          "Name": "$True",
+          "Description": "Logical constant \"True\""
+        },
+        {
+          "Name": "$False",
+          "Description": "Logical constant \"False\""
+        },
+        {
+          "Name": "`$",
+          "Description": "Dollar symbol. Can be used inside text constants. Example \"Amount `$200\""
+        },
+        {
+          "Name": "`\"",
+          "Description": "Quotes. Can be used inside text constants. Example \"He said `\"No`\"\""
+        },
+        {
+          "Name": "`n",
+          "Description": "New line symbol. Can be used inside text constants. Example \"First line`nSecond line\""
+        },
+        {
+          "Name": "`r",
+          "Description": "Carriage return. Can be used inside text constants. Example \"First line`rSecond line\""
+        },
+        {
+          "Name": "`t",
+          "Description": "Horizontal tab. Can be used inside text constants. Example \"Text 1`tText 2\""
+        },
+		{
+          "Name": "#StopRefactoring",
+          "Description": "Prohibits the robot from processing variables after this line. Processing refers to the conversion of variable names with the indication of the class"
+        },
+		{
+          "Name": "#StartRefactoring",
+          "Description": "Allows the work to process variables after this line. Processing refers to the conversion of variable names with the indication of the class. This action works by default"
+        },
+      ]
+    },
+	{
+      "Name": "-",
+      "Elements": []
+    },
+	{
+      "Name": "Useful Transformations",
+      "Elements": [
+        {
+          "Name": "$HtmlBody -Replace \"<.*?>\", \"\"",
+          "Description": "Removing all html tags from a string. For example, to remove all tags from an email body, you can use this method: $Mail.HtmlBody -Replace \"<.*?>\", \"\""
+        },
+		{
+          "Name": "_tonumber($Value)",
+          "Description": "Fast transformation of a string to Number (Double) type. In case of an error, 0 will be returned"
+        },
+		{
+          "Name": "_tomoney($Value)",
+          "Description": "Fast transformation of a string to Money (Decimal) type. In case of an error, 0 will be returned"
+        },
+		{
+          "Name": "_tological($Value)",
+          "Description": "Fast transformation of a string to Logical type. In case of an error, $False will be returned"
+        },
+		{
+          "Name": "_tobool($Value)",
+          "Description": "Fast transformation of a string to Logical type (synonym to Bool type). In case of an error, $False will be returned"
+        },
+		{
+          "Name": "_toint($Value)",
+          "Description": "Fast transformation of a string to Int32 type. In case of an error, 0 will be returned"
+        },
+		{
+          "Name": "_todouble($Value)",
+          "Description": "Fast transformation of a string to Double (Number) type. In case of an error, 0 will be returned"
+        },
+		{
+          "Name": "_todecimal($Value)",
+          "Description": "Fast transformation of a string to Decimal (Money) type. In case of an error, 0 will be returned"
+        },
+		{
+          "Name": "_tocell($Value)",
+          "Description": "Fast transformation of a number to an equivalent Excel column value. For example, the number 7 will be transformed into G"
+        },
+		{
+          "Name": "_fromcell($Value)",
+          "Description": "Fast transformation of an Excel column value to its equivalent number. For example, the value G will be transformed into 7"
+        },
+		{
+          "Name": "_isnull($Value)",
+          "Description": "Checks the value for $null or DBNull"
+        },
+		{
+          "Name": "_isempty($Value)",
+          "Description": "Checks the value for $null or DBNull, as well as for an empty string value"
+        }
+      ]
+    },
+	{
+      "Name": "-",
+      "Elements": []
+    },
+	{
+      "Name": "Working with SecureString",
+      "Elements": [
+		{
+          "Name": "_fromsecure($MySecureString)",
+          "Description": "Extracts the value from a SecureString variable. Type of returned value [Text]"
+        },
+		{
+          "Name": "_tosecure($MyPassword)",
+          "Description": "Wraps the specified text value into SecureString. Type of returned value [System.Security.SecureString]"
+        }
+      ]
+    },
+    {
+      "Name": "-",
+      "Elements": []
+    },
+    {
+      "Name": "Math Functions",
+      "Elements": [         
+		{
+          "Name": "Abs(-5)",
+          "Description": "Returns the modulus of a number. The function parameter can be a numeric constant or a variable of type [Number]. Example: Abs(-123) = 123"
+        },
+        {
+          "Name": "Acos(0.7)",
+          "Description": "Returns the arccosine. The function parameter can be a numeric constant or a variable of type [Number] with a value from -1 to 1"
+        },
+        {
+          "Name": "Asin(0.7)",
+          "Description": "Returns the arcsine. The function parameter can be a numeric constant or a variable of type [Number] with a value from -1 to 1"
+        },
+        {
+          "Name": "Atan(0.7)",
+          "Description": "Returns the arctangent. The function parameter can be a numeric constant or a variable of type [Number] with a value from -1 to 1"
+        },
+        {
+          "Name": "Atan2(2.0,1.0)",
+          "Description": "Atan2(x, y) - Returns the angle, the tangent of which is equal to the ratio of two specified numbers, where (x, y) is a point in the Cartesian coordinate system. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "BigMul(2147483647,2147483647)",
+          "Description": "BigMul(x, y) - returns the product of x * y as an [long] object. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Ceiling(2.34)",
+          "Description": "Ceiling(value): returns the smallest floating point number not less than 'value'. Example: Ceiling(2.34) => 3. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Cos(60)",
+          "Description": "Returns the cosine of an angle. The function parameter can be a numeric constant or a variable of type [Number] with a value from -1 to 1"
+        },
+        {
+          "Name": "Cosh(0.7)",
+          "Description": "Returns the hyperbolic cosine of an angle $value. The function parameter can be a numeric constant or a variable of type [Number] with a value from -1 to 1"
+        },
+        {
+          "Name": "DivRem(10,3,[ref] $result)",
+          "Description": "DivRem(a, b, result) - returns the result of dividing a/b, and the remainder is placed in the variable 'result'. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Equals(10,3)",
+          "Description": "Equals(a, b) - returns $True if two numbers a and b are equal, otherwise $False. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Exp(3)",
+          "Description": "Exp(value)returns the natural logarithm base, raised to the power 'value'. The function parameters can be numeric constants or variables of type [Number]"
+        },
+		{
+          "Name": "Floor(6.78)",
+          "Description": "Floor(value) - returns the largest floating point number not greater than 'value'. Example: Floor(6.78) => 6. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "IEEERemainder(10,3)",
+          "Description": "IEEERemainder(a, b) - returns the remainder of a/b according to the IEEE 754 standard. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Log(1.2)",
+          "Description": "Log(value) - returns the natural logarithm of a number 'value'. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Log10(1.2)",
+          "Description": "Log10(value) - returns the decimal logarithm of a number 'value'. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Max(10,3)",
+          "Description": "Max(a, b) - returns the maximum value from two specified numbers. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Min(10,3)",
+          "Description": "Min(a, b) - returns the minimum value from two specified numbers. The function parameters can be numeric constants or variables of type [Number]"
+        },
+		{
+          "Name": "Pow(2,3)",
+          "Description": "Pow(a, b): returns the number 'a' raised to the power of 'b'. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Round(12.34,1)",
+          "Description": "Rounds a number. The function parameter can be a numeric constant or a variable of type [Number]. Round($X) - rounds the number to the nearest integer. Round($X,$Y) - rounds the number to the specified number of digits after the comma. Example: Round(12.34) = 12; Round(12.34, 1) = 12,3"
+        },
+        {
+          "Name": "Sign(2)",
+          "Description": "Sign($value): returns the number 1 if the number 'value' is positive, and -1 if the 'value' is negative. If 'value' is 0, then it returns 0. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Sin(45)",
+          "Description": "Returns the sine of an angle. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Sinh(0.7)",
+          "Description": "Returns the hyperbolic sine of an angle. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Tan(45)",
+          "Description": "Returns the tangent of an angle. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Tanh(0.7)",
+          "Description": "Returns the hyperbolic tangent of an angle. The function parameters can be numeric constants or variables of type [Number]"
+        },
+        {
+          "Name": "Sqrt(9)",
+          "Description": "Returns the square root of a number. The function parameter can be a numeric constant or a variable of type [Number]. Example Sqrt(4)=2"
+        },
+        {
+          "Name": "Truncate(3.7)",
+          "Description": "Truncate(value) - discards the fractional part of the number 'value', returning only the integer value. The function parameters can be numeric constants or variables of type [Number]"
+        }
+		]
+    },
+    {
+      "Name": "-",
+      "Elements": []
+    },
+    {
+       "Name": "Expressions",
+       "Elements": [
+         {
+           "Name": "10+$a",
+           "Description": "An example of adding a variable and a number. If $a = 12, then the expression (10+$a) will have the value 22."
+         },
+         {
+           "Name": "$a*10-$b",
+           "Description": "An example of using variables and numbers in an expression. Let $a = 12 and $b = 5, then the expression ($a*10-$b) will have the value 115."
+         },
+         {
+           "Name": "$a-($b+5)",
+           "Description": "Example of using parentheses. Let $a = 12 and $b = 5, then the expression ($a-($b+5)) will evaluate to 2."
+         },
+         {
+           "Name": "$a+\"text\"",
+           "Description": "An example of adding a variable and a string. Let's say $a = \"This\", then the expression ($a+\"text\") will evaluate to \"This text\"."
+         }
+       ]
+    },
+    {
+      "Name": "-",
+      "Elements": []
+    },
+	{
+       "Name": "Logical Operators",
+       "Elements": [
+         {
+           "Name": "AND",
+           "Description": "Boolean 'AND'. Returns $True if two conditions are true. Example: let $a = 1 and $b = 5, then the expression ($a==1) AND ($b > 4) will be evaluate to $True, and the expression ($a==1) AND ($b < 4) will evaluate to $False."
+         },
+         {
+           "Name": "OR",
+           "Description": "Boolean 'OR'. Returns $True if at least one condition is true. Example: let $a = 1 and $b = 5, then expression ($a==1) OR ($b > 4 ) will evaluate to $True, and the expression ($a==1) AND ($b < 4) will evaluate to $True."
+         },
+         {
+           "Name": "XOR",
+           "Description": "Exclusive 'OR'. Returns $True if ONLY ONE condition is true. Example: Let variable $a = 1 and $b = 5, then expression ($a==1) XOR ($b > 4) will evaluate to $False, and the expression ($a==1) AND ($b < 4) will evaluate to $True."
+         },
+         {
+           "Name": "NO",
+           "Description": "Boolean 'NOT'. Inverts a boolean state to its opposite. Example: if variable $a = 1, then NOT expression ($a==1) will evaluate to $False."
+         },
+         {
+           "Name": "LIKE",
+           "Description": "Checks if a string is contained in a string value. '*' operator - substitutes any number of any characters. '?' operator - substitutes only one any character.Example: let the variable $a = 'John Smith', then the expression ($a LIKE 'John*') will evaluate to $True."
+         },
+         {
+           "Name": "MATCH",
+           "Description": "Checks if a string is contained in a string value using regular expressions. See the 'Regular Expressions' section for details"
+         },
+         {
+           "Name": "CONTAINS",
+           "Description": "Checks if the collection contains the specified value. Example: if the variable $list = @(1,2,3), then the expression ($list CONTAINS 2) will evaluate to $True, and the expression ($list CONTAINS 10) will be $False."
+         },
+         {
+           "Name": "-IN",
+           "Description": "Checks if the value being checked is in the collection. Example: if the variable $list = @(1,2,3), then the expression (5 -IN $list) will evaluate to $False, and the expression (2 -IN $list) will be $True."
+         }
+       ]
+    },
+    {
+      "Name": "-",
+      "Elements": []
+    },
+	{
+       "Name": "Comparison Operators",
+       "Elements": [
+         {
+           "Name": "==",
+           "Description": "'Equality'. Returns $True if two numbers are equal. Example: let $a = 1 and $b = 5, then expression ($a==$b) will evaluate to $False and expression ($b==5) will be $True."
+         },
+         {
+           "Name": "!=",
+           "Description": "'Inequality'. Returns $True if two numbers are not equal. Example: Let's say $a = 1 and $b = 5, then the expression ($a!=$b) will evaluate to $True, and expression ($a!=1) will evaluate to $False."
+         },
+         {
+           "Name": ">=",
+           "Description": "'Greater than or equal to'. Returns $True if the number on the left is greater than or equal to the value on the right. Example: Let $a = 1 and $b = 5, then the expression ($a>=$b) will have $False, and the expression ($b>=3) will evaluate to $True."
+         },
+         {
+           "Name": "<=",
+           "Description": "'Less than or equal to'. Returns $True if the number on the left is less than or equal to the value on the right. Example: Let $a = 1 and $b = 5, then the expression ($a<=$b) will have value $True, and the expression ($b<=10) will evaluate to $True."
+         },
+         {
+           "Name": ">",
+           "Description": "'Greater than'. Returns $True if the number on the left is greater than the value on the right. Example: if the variable $a = 1 and $b = 5, then the expression ($a>$b) will evaluate to $False and expression ($b>2) will evaluate to $True."
+         },
+         {
+           "Name": "<",
+           "Description": "'Less than'. Returns $True if the number on the left is less than the value on the right. Example: if $a = 1 and $b = 5, then expression ($a<$b) will evaluate to $True and expression ($b<10) will evaluate to $False."
+         },
+		{
+           "Name": "-eq",
+           "Description": "'Equality'. Returns $True if two numbers are equal. Example: let $a = 1 and $b = 5, then expression ($a -eq $b) will evaluate to $False and expression ($b -eq 5) will be $True."
+         },
+         {
+           "Name": "-ne",
+           "Description": "'Inequality'. Returns $True if the two numbers are not equal. Example: Let $a = 1 and $b = 5, then the expression ($a -ne $b) will evaluate to $True and expression ($a -ne 1) will evaluate to $False."
+         },
+         {
+           "Name": "-ge",
+           "Description": "'Greater than or equal to'. Returns $True if the number on the left is greater than or equal to the value on the right. Example: let $a = 1 and $b = 5, then the expression ($a -ge $b) will have $False and the expression ($b -ge 3) will evaluate to $True."
+         },
+         {
+           "Name": "-le",
+           "Description": "'Less than or equal to'. Returns $True if the number on the left is less than or equal to the value on the right. Example: let $a = 1 and $b = 5, then the expression ($a -le $b) will have $True, and the expression ($b -le 10) will evaluate to $True."
+         },
+         {
+           "Name": "-gt",
+           "Description": "'Greater than'. Returns $True if the number on the left is greater than the value on the right. Example: if the variable $a = 1 and $b = 5, then the expression ($a -gt $b) will evaluate to $False, and the expression ($b -gt 2) will evaluate to $True."
+         },
+         {
+           "Name": "-lt",
+           "Description": "'Less than'. Returns $True if the number on the left is less than the value on the right. Example: let $a = 1 and $b = 5, then the expression ($a -lt $b) will evaluate to $True, and the expression ($b -lt 10) will evaluate to $False."
+         }
+       ]
+     },
+    {
+      "Name": "-",
+      "Elements": []
+    },
+	{
+       "Name": "Text Functions",
+       "Elements": [
+         {
+           "Name": "$MyString.Replace(\"text\", \"newtext\")",
+           "Description": "Replacing a substring with a new value. Example: let's say the variable $str = \"This text\", then after executing the expression ($newstr = $str.Replace(\"text\", \"newtext\")) the $newstr variable will have the value \"This newtext\""
+         },
+         {
+           "Name": "$MyString.Contains(\"text\")",
+           "Description": "Whether the string contains another string. Returns $True/$False. Example: let's say $str = \"This text\", then after executing the expression ($result = $str.Contains(\"text\" )) the $result variable will have the value $True"
+         },
+         {
+           "Name": "$MyString.Substring(0, 10)",
+           "Description": "Returns the specified number of characters from the string, starting at the specified position. Example: let's say the variable $str = \"Eat more of those soft French buns\", then after executing the expression ($newstr = $str.Substring(4, 11)) the $newstr variable will have the value \"more of\""
+         },
+         {
+           "Name": "$MyString.Length",
+           "Description": "Returns the number of characters in a string. Example: let's say the variable $str = \"This text\", then after the expression ($result = $str.Length) is executed, the variable $result will have the value 9"
+         },
+         {
+           "Name": "$MyString.Split(\",\")",
+           "Description": "Splits a string object into an array of strings by splitting the string by the specified substring. Returns a List<string> object. Example: let's say $list = \"Eat more of those soft French buns\", then after executing the expression ($newstr = $str.Split(\" \")) $list will be @(\"Eat\",\"more\",\"of\",\"those\",\"soft\",\"French\",\"buns\")"
+         },
+         {
+           "Name": "$MyString.Trim()",
+           "Description": "Removes whitespace characters from the beginning and end of the string (space, tab, non-breaking space, etc.). Example: let's say $str = \" This text \", then after executing the expression ($newstr = $str.Trim()) $newstr will be set to \"This text\""
+         },
+		 {
+           "Name": "$MyString.ToUpper()",
+           "Description": "Converts a string to uppercase. Example: let's say $str = \"This text\", then after executing the expression ($result = $str.ToUpper()) the variable $result will have the value \"THIS TEXT\""
+         },
+		 {
+           "Name": "$MyString.ToLower()",
+           "Description": "Converts a string to lowercase. Example: let's say $str = \"This TEXT\", then after executing the expression ($result = $str.ToLower()) the variable $result will have the value \"this text\""
+         },
+		 {
+           "Name": "$MyString.Insert(0, \"text\")",
+           "Description": "Inserts the given string at the given position in the source string. Example: let's say the variable $str = \"This TEXT\", then after executing the expression ($result = $str.Insert(5, \"great\") ) the $result variable will have the value \"This great TEXT\""
+         }
+       ]
+    },
+    {
+      "Name": "-",
+      "Elements": []
+    },
+    {
+       "Name": "DataTable Examples",
+       "Elements": [
+         {
+           "Name": "$Table.Columns.Count",
+           "Description": "Get the number of columns in a table"
+         },
+         {
+           "Name": "$Table.Rows.Count",
+           "Description": "Get the number of rows in a table"
+         },
+         {
+           "Name": "$Table.Columns[$index].Name",
+           "Description": "Get the column name at the specified index. Indexing starts at 0."
+         },
+         {
+           "Name": "$Table.Rows[$indexrow][$indexcol]",
+           "Description": "Get or set the cell value by column and row index where $indexrow is the row index and $indexcol is the column index. Indexing starts at 0."
+         }
+       ]
+    },
+    {
+      "Name": "-",
+      "Elements": []
+    },
+	{
+       "Name": "Lists and Hashtables Examples",
+       "Elements": [
+         {
+           "Name": "$List.Count",
+           "Description": "Get the number of items in the list"
+         },
+         {
+           "Name": "$Hashtable.Count",
+           "Description": "Get the number of elements in the hashtable"
+         },
+         {
+           "Name": "$List[$Index]",
+           "Description": "Get the element of the list with the index specified in the $index variable. The first element in the list has index 0."
+         },
+         {
+           "Name": "$List[0]",
+           "Description": "Get the element of the list at the specified index. The first element in the collection has index 0."
+         },
+         {
+           "Name": "$Hashtable[$Key]",
+           "Description": "Get the hashtable element by the key specified in the $Key variable"
+         },
+         {
+           "Name": "$Hashtable[\"Key\"]",
+           "Description": "Get hashtable element by specified key"
+         },
+		{
+           "Name": "$Hashtable.ContainsKey($Key)",
+           "Description": "Check if key exists in hashtable"
+         },
+		{
+           "Name": "$Hashtable.ContainsValue($Key)",
+           "Description": "Check if value exists in hashtable"
+         }
+       ]
+     },
+    {
+      "Name": "-",
+      "Elements": []
+    },
+{
+       "Name": "Time Formats",
+       "Elements": [
+         {
+           "Name": "\"dd.MM.yyyy HH:mm:ss\"",
+           "Description": "Date and time. Used in the \"Convert DateTime to Text\" block of the \"Date and Time\" category in the \"StringFormat\" property"
+         },
+         {
+           "Name": "\"yyyy\/MM\/dd HH:mm:ss\"",
+           "Description": "Date and time. Used in the \"Convert DateTime to Text\" block of the \"Date and Time\" category in the \"StringFormat\" property"
+         },
+         {
+           "Name": "\"dd.MM.yyyy\"",
+           "Description": "Date only. Used in the \"Convert DateTime to Text\" block of the \"Date and Time\" category in the \"StringFormat\" property"
+         },
+         {
+           "Name": "\"yyyy\/MM\/dd\"",
+           "Description": "Date only. Used in the \"Convert DateTime to Text\" block of the \"Date and Time\" category in the \"StringFormat\" property"
+         },
+         {
+           "Name": "\"HH:mm:ss\"",
+           "Description": "Time only. Used in the \"Convert DateTime to Text\" block of the \"Date and Time\" category in the \"StringFormat\" property"
+         }
+       ]
+     },
+     {
+       "Name": "-",
+       "Elements": []
+     },
+     {
+       "Name": "MailMessage Object Examples",
+       "Elements": [
+         {
+           "Name": "$Mail.From.Address",
+           "Description": "Receive mail as a string from the specified address. Used after receiving mail from the server using the \"Receive Emails via POP3\" and \"Receive Emails via IMAP\" blocks of the \"Email\" category"
+         },
+         {
+           "Name": "$Mail.From.Name",
+           "Description": "Get mail as a string by display name. Used after receiving mail from the server using the \"Receive Emails via POP3\" and \"Receive Emails via IMAP\" blocks of the \"Email\" category"
+         },
+         {
+           "Name": "$Mail.To.Address",
+           "Description": "Receive mail as a string from the specified address. Used after receiving mail from the server using the \"Receive Emails via POP3\" and \"Receive Emails via IMAP\" blocks of the \"Email\" category"
+         },
+         {
+           "Name": "$Mail.To.Name",
+           "Description": "Get mail as a string by display name. Used after receiving mail from the server using the \"Receive Emails via POP3\" and \"Receive Emails via IMAP\" blocks of the \"Email\" category"
+         },
+         {
+           "Name": "$Mail.Subject",
+           "Description": "Get the subject of the email as a string. Used after receiving emails from the server using the \"Receive Emails via POP3\" and \"Receive Emails via IMAP\" blocks of the \"Email\" category"
+         },
+         {
+           "Name": "$Mail.Body",
+           "Description": "Get the body of the email as a string. Used after receiving emails from the server using the \"Receive Emails via POP3\" and \"Receive Emails via IMAP\" blocks of the \"Email\" category"
+         },
+         {
+           "Name": "$Mail.HtmlBody",
+           "Description": "Get the body of the email as an html string if available. Used after receiving emails from the server using the \"Receive Emails via POP3\" and \"Get emails via IMAP\" blocks of the \"Email\" category"
+         },
+         {
+           "Name": "$Mail.Date",
+           "Description": "Get the date of the email as a DateTime object. Used after receiving emails from the server using the \"Receive Emails via POP3\" and \"Receive Emails via IMAP\" blocks of the \"Email\" category"
+         },
+		{
+           "Name": "$Mail.IsAttachments",
+           "Description": "Checks for attachments in the message. If attachments are present, then $True is returned, otherwise $False. Used after receiving messages from the server using the \"Receive Emails via POP3\" and \"Receive Emails via IMAP\" blocks category \"E-mail\""
+         },
+		{
+           "Name": "$Mail.CountAttachments",
+           "Description": "Returns the number of attachments in the email. Used after receiving emails from the server using the \"Receive Emails via POP3\" and \"Receive Emails via IMAP\" blocks of the \"Email\" category"
+         },
+		{
+           "Name": "$Mail.IsSeen",
+           "Description": "Checks if the \"Read\" status of the message is set. If the status is set, then $True is returned, otherwise $False. If this property is set, the message status on the server will change. Used after receiving messages from the server using block \"Receive Emails via IMAP\" category \"E-mail\""
+         },
+		{
+           "Name": "$Mail.Delete()",
+           "Description": "Deletes the message from the server"
+         }
+       ]
+     },
+	{
+      "Name": "-",
+      "Elements": []
+    },
+	{
+       "Name": "TaskObject Examples",
+       "Elements": [
+         {
+           "Name": "$TaskObject.guid",
+           "Description": "Returns the guid of the task. Value type [Text]"
+         },
+         {
+           "Name": "$TaskObject.name",
+           "Description": "Returns the task name. Value type [Text]"
+         },
+		{
+           "Name": "$TaskObject.description",
+           "Description": "Returns the description of the task. Value type [Text]"
+         },
+		{
+           "Name": "$TaskObject.comment",
+           "Description": "Returns the task's comment. Value type [Text]"
+         },
+		{
+           "Name": "$TaskObject.status",
+           "Description": "Returns the status of the task. Value Type [int]: New = 0; InProgress = 1; Success = 2; Failed (Application) = 3; Failed (Business) = 4; Abandoned = 5; Postponed = 6"
+         },
+		{
+           "Name": "$TaskObject.priority",
+           "Description": "Returns the priority of the task. Value type [int]: Low = 0; Normal = 1; High = 2"
+         },
+		{
+           "Name": "$TaskObject.parameters",
+           "Description": "Returns task parameters. Value type [Text]/[DataTable]/[Hashtable]"
+         },
+		{
+           "Name": "$TaskObject.created",
+           "Description": "Returns the date and time the task was created. Value type [DateTime]"
+         },
+		{
+           "Name": "$TaskObject.updated",
+           "Description": "Returns the date and time the task was updated. Value type [DateTime]"
+         },
+		{
+           "Name": "$TaskObject.postponed",
+           "Description": "Returns the date and time of the pending task. Value type [DateTime]"
+         },
+		 {
+          "Name": "$TaskObject.deadline",
+          "Description": "Returns the date and time of the deadline task. Value type [DateTime]"
+        },
+		{
+           "Name": "$TaskObject.tags",
+           "Description": "Returns tags. Value type [Text]"
+         }
+       ]
+     },
+	 {
+      "Name": "-",
+      "Elements": []
+    },
+	{
+      "Name": "FileGroupObject Examples",
+      "Elements": [
+        {
+          "Name": "$FileGroupObject.guid",
+          "Description": "Returns the guid of the file group. Value type [Text]"
+        },
+        {
+          "Name": "$FileGroupObject.name",
+          "Description": "Returns the name of the file group. Value type [Text]"
+        },
+		{
+          "Name": "$FileGroupObject.description",
+          "Description": "Returns a description of the file group. Value type [Text]"
+        },
+		{
+          "Name": "$FileGroupObject.created",
+          "Description": "Returns the date and time when the file group was created. Value type [DateTime]"
+        },
+		{
+          "Name": "$FileGroupObject.updated",
+          "Description": "Returns the date and time when the file group was updated. Value type [DateTime]"
+        },
+		{
+          "Name": "$FileGroupObject.is_deleted",
+          "Description": "Returns the flag for deleting a group of files. Value type [bool]"
+        },
+		{
+          "Name": "$FileGroupObject.account_id",
+          "Description": "Returns the account id of the creator of the file group. Value type [int]"
+        },
+		{
+          "Name": "$FileGroupObject.files",
+          "Description": "Returns files of this group. Value type [List] with objects FileObject"
+        }
+      ]
+    },
+	{
+      "Name": "-",
+      "Elements": []
+    },
+	{
+      "Name": "FileObject Examples",
+      "Elements": [
+        {
+          "Name": "$FileObject.guid",
+          "Description": "Returns the guid of the file. Value type [Text]"
+        },
+        {
+          "Name": "$FileObject.name",
+          "Description": "Returns the file name. Value type [Text]"
+        },
+		{
+          "Name": "$FileObject.description",
+          "Description": "Returns the file description. Value type [Text]"
+        },
+		{
+          "Name": "$FileObject.created",
+          "Description": "Returns the date and time the file was created. Value type [DateTime]"
+        },
+		{
+          "Name": "$FileObject.updated",
+          "Description": "Returns the date and time the file was updated. Value type [DateTime]"
+        },
+		{
+          "Name": "$FileObject.folder_guid",
+          "Description": "Returns the guid of the file group. Value type [Text]"
+        },
+		{
+          "Name": "$FileObject.file_name",
+          "Description": "Returns the file name with the extension. Value type [DateTime]"
+        },
+		{
+          "Name": "$FileObject.is_deleted",
+          "Description": "Returns the file deletion flag. Value type [bool]"
+        },
+		{
+          "Name": "$FileObject.account_id",
+          "Description": "Returns the account id of the file creator. Value type [int]"
+        },
+      ]
+    },
+    {
+      "Name": "-",
+      "Elements": []
+    },
+	{
+       "Name": "Cookie Object Examples",
+       "Elements": [
+         {
+           "Name": "$Cookie.Name",
+           "Description": "Returns or sets the name of the Cookie. Value type [Text]"
+         },
+         {
+           "Name": "$Cookie.Value",
+           "Description": "Returns or sets a value for the Cookie object. Value type [Text]"
+         },
+         {
+           "Name": "$Cookie.Domain",
+           "Description": "Returns or sets the URI for which the Cookie is valid. Value type [Text]"
+         },
+         {
+           "Name": "$Cookie.Path",
+           "Description": "Returns or sets the URIs to which the Cookie is applied. Value type [Text]"
+         },
+         {
+           "Name": "$Cookie.Expires",
+           "Description": "Returns or sets the cookie's expiration date and time. Value type [DateTime]"
+         },
+         {
+           "Name": "$Cookie.Discard",
+           "Description": "Returns or sets the reset flag set by the server. $True if the client should reset the cookie at the end of the current session. Value type [Logical]"
+         },
+         {
+           "Name": "$Cookie.Secure",
+           "Description": "Returns or sets the security level of the Cookie. $True if the client should only return the cookie on subsequent requests, provided the requests use HTTPS. Value type [Logical]"
+         },
+         {
+           "Name": "$Cookie.HttpOnly",
+           "Description": "Determines whether the cookie can be accessed by page script or other active content. Value type [Logical]"
+         }
+       ]
+     },
+    {
+      "Name": "-",
+      "Elements": []
+    },
+	{
+       "Name": "File Variables",
+       "Elements": [
+         {
+           "Name": "\"%USERPROFILE%\"",
+           "Description": "Profile directory. Can be used in any block where the path to the file is specified. Example: the specified value \"%USERPROFILE%\\test.txt\" will be converted to \"C:\\Users\\User\\test.txt\""
+         },
+         {
+           "Name": "\"%TEMP%\"",
+           "Description": "Temp folder directory. Can be used in any block where the path to the file is specified. Example: the specified value \"%TEMP%\\test.txt\" will be converted to \"C:\\Users\\User\\AppData\\Local\\Temp\\test.txt\""
+         },
+         {
+           "Name": "\"%WINDIR%\"",
+           "Description": "Windows folder directory. Can be used in any block where the path to the file is specified. Example: the specified value \"%WINDIR%\\test.txt\" will be converted to \"C:\\Windows\\test.txt\""
+         },
+         {
+           "Name": "\"%Desktop%\"",
+           "Description": "Desktop directory. Can be used in any block where the path to the file is specified. Example: the specified value \"%Desktop%\\test.txt\" will be converted to \"C:\\Users\\User\\Desktop\\test.txt\""
+         },
+         {
+           "Name": "\"%ApplicationData%\"",
+           "Description": "A directory that acts as a shared repository for the current roaming user's application data. Can be used in any block that specifies a file path. Example: the specified value \"%ApplicationData%\\test.txt\" will be converted to \"C:\\Users\\User\\AppData\\Roaming\\test.txt\""
+         },
+         {
+           "Name": "\"%Favorites%\"",
+           "Description": "A directory that serves as a shared repository for the user's favorites. Can be used in any block that specifies a file path. Example: the specified value \"%Favorites%\\test.txt\" will be converted to \"C:\\Users\\User\\Favorites\\test.txt\""
+         },
+         {
+           "Name": "\"%Fonts%\"",
+           "Description": "Virtual folder containing fonts. Can be used in any block where the path to the file is specified. Example: the specified value \"%Fonts%\\test.txt\" will be converted to \"C:\\Windows\\Fonts\\test.txt\""
+         },
+         {
+           "Name": "\"%LocalApplicationData%\"",
+           "Description": "A directory serving as a shared repository of application data used by the current user that is not roaming. Can be used in any block that specifies a file path. Example: the specified value \"%LocalApplicationData%\\test.txt\" will be converted in \"C:\\Users\\User\\AppData\\Local\\test.txt\""
+         },
+         {
+           "Name": "\"%MyDocuments%\"",
+           "Description": "My Documents folder. Can be used in any block where the path to the file is specified. Example: the specified value \"%MyDocuments%\\test.txt\" will be converted to \"C:\\Users\\User\\Documents\\test.txt\""
+         },
+         {
+           "Name": "\"%MyMusic%\"",
+           "Description": "My Music folder. Can be used in any block where the path to the file is specified. Example: the specified value \"%MyMusic%\\test.txt\" will be converted to \"C:\\Users\\User\\Music\\test.txt\""
+         },
+         {
+           "Name": "\"%MyPictures%\"",
+           "Description": "My Pictures folder. Can be used in any block where the path to the file is specified. Example: the specified value \"%MyPictures%\\test.txt\" will be converted to \"C:\\Users\\User\\Pictures\\test.txt\""
+         },
+         {
+           "Name": "\"%MyVideos%\"",
+           "Description": "File system directory serving as a repository of video files owned by the user. Can be used in any block that specifies a file path. Example: the specified value \"%MyVideos%\\test.txt\" will be converted to \"C:\\Users\\User\\Videos\\test.txt\""
+         },
+         {
+           "Name": "\"%Personal%\"",
+           "Description": "A directory serving as a shared repository for documents. This member is equivalent to MyDocuments. Can be used in any block that specifies a file path. Example: \"%Personal%\\test.txt\" specified will be converted to \"C:\\Users\\User\\Documents\\test.txt\""
+         },
+         {
+           "Name": "\"%ProgramFiles%\"",
+           "Description": "Directory of program files. Can be used in any block where the path to the file is specified. Example: the specified value \"%ProgramFiles%\\test.txt\" will be converted to \"C:\\Program Files\\test.txt\""
+         },
+         {
+           "Name": "\"%ProgramFilesX86%\"",
+           "Description": "Program Files x86 folder. Can be used in any block where the path to the file is specified. Example: the specified value \"%ProgramFilesX86%\\test.txt\" will be converted to \"C:\\Program Files (x86)\\test.txt\""
+         },         
+        {
+           "Name": "\"%System%\"",
+           "Description": "System directory. Can be used in any block where the file path is specified. Example: the specified value \"%System%\\test.txt\" will be converted to \"C:\\Windows\\system32\\test.txt\""
+         },
+         {
+           "Name": "\"%SystemX86%\"",
+           "Description": "Windows System folder. Can be used in any block where the path to the file is specified. Example: the specified value \"%SystemX86%\\test.txt\" will be converted to \"C:\\Windows\\SysWOW64\\test.txt\""
+         },
+         {
+           "Name": "\"%Windows%\"",
+           "Description": "Windows directory or SYSROOT. Can be used in any block where the path to the file is specified. Example: the specified value \"%Windows%\\test.txt\" will be converted to \"C:\\Windows\\test.txt\""
+         }
+      ]
+    },
+    {
+      "Name": "-",
+      "Elements": []
+    },
+    {
+       "Name": "Helper Functions",
+       "Elements": [         
+		 {
+			"Name": "[Robot.Helpers]::to_ColumnName($Value)",
+            "Description": "Converting the numeric value of an Excel column to its string representation. Example: the number 100 will be converted to the string \"CV\""
+		 }
+       ]
+     },
+	{
+      "Name": "-",
+      "Elements": []
+    },
+    {
+       "Name": "Database Connection Strings",
+       "Elements": [
+         {
+           "Name": "\"Server=myServerAddress;Database=myDataBase;\"",
+           "Description": "SQL Server connection string"
+         },
+         {
+           "Name": "\"Server=myServerAddress;Database=myDataBase;\"",
+           "Description": "MySQL connection string"
+         },
+         {
+           "Name": "\"Data Source=$filedb;Journal Mode=Off;\"",
+           "Description": "SQLite connection string"
+         },
+		{
+           "Name": "\"Database=SampleDatabase.fdb;DataSource=localhost;\"",
+           "Description": "Firebird connection string"
+         },
+		{
+           "Name": "\"Data Source=(DESCRIPTION=(CID=GTU_APP)(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=$Host)(PORT=$Port)))(CONNECT_DATA=(SERVICE_NAME=$ Service)(SERVER=DEDICATED)));User Id=$User;Password=$Password;\"",
+           "Description": "Oracle connection string"
+         },
+		{
+           "Name": "\"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\\TEST.xlsx';Extended Properties='Excel 12.0 Xml;IMEX=1;HDR=YES;';\"",
+           "Description": "Connection string to OleDB for working with Excel. Data can be retrieved like this: \"SELECT * FROM [Sheet1$];\""
+         },
+		{
+           "Name": "\"Host=myserver;Database=mydatabase;\"",
+           "Description": "PostgreSQL connection string"
+         },
+		{
+           "Name": "\"DSN=MyDSN;\"",
+           "Description": "ODBC connection string"
+         }
+       ]
+     },
+	{
+      "Name": "-",
+      "Elements": []
+    },
+    {
+       "Name": "Filters for Outlook",
+       "Elements": [
+         {
+           "Name": "\"@SQL=%yesterday(\"\"urn:schemas:httpmail:datereceived\"\")%\"",
+           "Description": "Filter for yesterday"
+         },
+         {
+           "Name": "\"@SQL=%today(\"\"urn:schemas:httpmail:datereceived\"\")%\"",
+           "Description": "Filter for today"
+         },
+{
+           "Name": "\"@SQL=urn:schemas:httpmail:fromemail Like '%TEXT%'\"",
+           "Description": "Filter for sender"
+         }
+       ]
+     }
+  ]
+}

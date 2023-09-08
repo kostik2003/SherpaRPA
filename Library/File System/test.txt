@@ -1,0 +1,12 @@
+AccClientDocMgr.AccClientDocMgr
+AccDictionary.AccDictionary
+AccServerDocMgr.AccServerDocMgr
+ADODB.Command
+ADODB.Connection
+ADODB.Error
+ADODB.ErrorLookup
+ADODB.Parameter
+ADODB.Record
+ADODB.Recordset
+ADODB.Stream
+ADOMD.Catalog

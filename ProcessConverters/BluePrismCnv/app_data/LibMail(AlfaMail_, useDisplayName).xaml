@@ -1,0 +1,555 @@
+﻿<ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:core="clr-namespace:ToolboxDesigner.Core;assembly=DiagramDesigner" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+     <Brush x:Key="WhiteItemBrush">#FFFFFF</Brush>
+     <Brush x:Key="DarkGrayItemBrush">#303030</Brush>
+     <Style x:Key="MyBlockItemStrokeWhiteBackgroundItemStyle" TargetType="Path">
+          <Setter Property="Fill" Value="{StaticResource WhiteItemBrush}" />
+          <Setter Property="Stroke" Value="{StaticResource DarkGrayItemBrush}" />
+          <Setter Property="StrokeThickness" Value="2" />
+          <Setter Property="StrokeLineJoin" Value="Round" />
+          <Setter Property="Stretch" Value="Fill" />
+          <Setter Property="IsHitTestVisible" Value="False" />
+          <Setter Property="SnapsToDevicePixels" Value="True" />
+     </Style>
+     <Style x:Key="MyBlockRectangle" TargetType="Path" BasedOn="{StaticResource MyBlockItemStrokeWhiteBackgroundItemStyle}">
+          <Setter Property="Data" Value="M 0,0 H 80 V 20 H 0 Z" />
+     </Style>
+     <Style x:Key="MyBlockRectangle_DragThumb" TargetType="Path" BasedOn="{StaticResource MyBlockRectangle}">
+          <Setter Property="IsHitTestVisible" Value="true" />
+          <Setter Property="Fill" Value="Transparent" />
+          <Setter Property="Stroke" Value="Transparent" />
+     </Style>
+     <core:ToolboxSettings x:Key="MyBlocks" Name="MyBlocks" Caption="AlfaMail" ToolboxGridType="List" Version="1">
+          <core:ToolboxSettings.ItemsSettings>
+               <core:ToolboxItemSettingsCollection>
+                    <core:ToolboxItemSettings DisplayName="SendFromRpabot" InternalName="MyBlock794a0d8ad10c47778213fdb183457a9e" FriendlyName="Добавление данных в очередь MailOutQueue для отправки из стандартного почтового ящика RPA" PathStyle="{StaticResource MyBlockRectangle}" PathStyle_DragThumb="{StaticResource MyBlockRectangle_DragThumb}" Width="200" Height="75" PathToImage="data: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" PathToToolboxImage="data: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" ImageType="LeftImage" NoDelete="False" Invisible="False" Proportional="False" Version="72" TextColor="#FF000000">
+                         <core:ToolboxItemSettings.Code><![CDATA[
+function MyBlock794a0d8ad10c47778213fdb183457a9e{{{block_id}}}
+{    
+	$__IsNormalExit = $true;
+    $__Error.Enter("{{{block_native_id}}}", "{{{ErrorLevel}}}","{{{ErrorDirection}}}","{{{ReportLevel}}}","{{{ErrorMessage}}}");
+    $__Error.AddConnectors("{{{connector-Error}}}", "{{{connectorRight}}}", "{{{connectorBottom}}}"); 
+    
+	#__StartPropertiesZone
+$Principal={{{Principal}}};
+$SendTo={{{SendTo}}};
+$CopyTo={{{CopyTo}}};
+$BlindCopyTo={{{BlindCopyTo}}};
+$Subject={{{Subject}}};
+$MessageBody={{{MessageBody}}};
+$Attachments={{{Attachments}}};
+$SendAsMime="{{{SendAsMime}}}";
+$Tag={{{Tag}}};
+$DeferUntil={{{DeferUntil}}};
+#__EndPropertiesZone
+	
+    try
+	{
+		#__StartCodeZone
+if([System.IO.Directory]::Exists("\\moscow\itfs\Folders_RPA\Sherpa"))   
+{
+     $global:AlfaRepository = "\\moscow\itfs\Folders_RPA\Sherpa";
+}
+elseif([System.IO.Directory]::Exists("\\nicerts\rpa\SHERPA"))   
+{
+     $global:AlfaRepository = "\\nicerts\rpa\SHERPA";
+}         
+elseif([System.IO.Directory]::Exists("C:\SHERPA"))   
+{
+    $global:AlfaRepository = "C:\SHERPA";
+}
+else 
+{    
+    throw("Недоступны библиотеки");
+} 
+
+Import-Module ($AlfaRepository+"\ScriptsPs\AlfaFunctions.psm1") -Force; 
+Import-Module ($AlfaRepository+"\ScriptsPs\AlfaGlobal.ps1") -Force; 
+SetAlfaGlobal
+
+#$QueueGuid = "bc9c25a3-70c4-437f-84c3-0ad37db5bdc4";  
+$QueueGuid = "MailOutQueue";  
+
+if (($SendTo -eq "") -and ($CopyTo -eq "") -and ($BlindCopyTo -eq "")) {
+    throw("Не указан получатель")}
+
+$QueueData = New-Object System.Data.DataTable;
+$QueueData.Columns.Add("Principal");
+$QueueData.Columns.Add("SendTo");
+$QueueData.Columns.Add("CopyTo");
+$QueueData.Columns.Add("BlindCopyTo");
+$QueueData.Columns.Add("Subject");
+$QueueData.Columns.Add("MessageBody");   
+$QueueData.Columns.Add("Attachments"); 
+$QueueData.Columns.Add("SendAsMime"); 
+
+$Row = $QueueData.NewRow(); 
+
+$Row["Principal"]   = $Principal; 
+$Row["SendTo"]      = $SendTo;
+$Row["CopyTo"]      = $CopyTo;
+$Row["BlindCopyTo"] = $BlindCopyTo;
+$Row["Subject"]     = $Subject;
+$Row["MessageBody"] = $MessageBody;
+$Row["Attachments"] = $Attachments;
+$Row["SendAsMime"]  = [System.Convert]::ToBoolean($SendAsMime);
+
+$QueueData.Rows.Add($Row);
+
+#$TaskObject  = AddItemToQueue -QueueGuid $QueueGuid -Name $Subject -Description "" -Parameters $QueueData -Deadline $null -Priority "" -PostponedTo $DeferUntil -TagNames $Tag; 
+$TaskObject  = AddItemToQueue -QueueGuid $QueueGuid -Name $Subject -Description "" -Parameters $QueueData -Deadline $null -Priority "" -PostponedTo $DeferUntil -TagNames $Tag;
+$NetTaskGuid = $TaskObject.guid;
+#__EndCodeZone
+	}
+	catch 
+    { 
+		$__IsNormalExit = $false;
+        $__Error.ExceptionCatch($_);
+        return;
+    }
+    finally
+	{
+		if($__IsNormalExit) 
+		{
+		
+	#__StartOutputZone
+
+#__EndOutputZone
+		
+			$__Error.Quit(); 
+		}
+	}	
+}
+]]></core:ToolboxItemSettings.Code>
+                         <core:ToolboxItemSettings.Properties>
+                              <core:PropertiesCollection>
+                                   <core:Property Name="ErrorLevel" Caption="Уровень обработки" Tooltip="Выбор уровня обработки ошибок. Возможные значения: &quot;Default&quot; - по умолчанию; &quot;Ignore&quot; - ошибки игнорируются; &quot;Handle&quot; - ошибки обрабатываются. Если выбрано значение &quot;Default&quot;, то будет использоваться значение блока &quot;Старт&quot; данной диаграммы" CatalogName="Error processing" Type="Enum" Value="Default" EnumVariants="Default;Ignore;Handle" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="ErrorDirection" Caption="Направление выхода" Tooltip="Выбор направления выхода из блока при возникновении ошибки. Возможные значения: &quot;Default&quot; - по умолчанию; &quot;Right / On Error&quot; - направо или по ошибке; &quot;Bottom&quot; - вниз. Данное свойство позволяет определить направление выхода при возникновении ошибок для блоков не содержащих коннектора &quot;Если ошибка&quot; (например блок &quot;Условие&quot;). Если выбрано значение &quot;Default&quot;, то будет использоваться значение блока &quot;Старт&quot; данной диаграммы" CatalogName="Error processing" Type="Enum" Value="Default" EnumVariants="Default;Right / On Error;Bottom" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="ReportLevel" Caption="Уровень сообщений" Tooltip="Выбор уровня сообщений, которые будут выводить блоки при работе. Возможные значения: &quot;Default&quot; - по умолчанию; &quot;Release&quot; - вывод отключен; &quot;Debug&quot; - вывод основной информации; &quot;Detailed&quot; - вывод подробной информации. Если выбрано значение &quot;Default&quot;, то будет использоваться значение блока &quot;Старт&quot; данной диаграммы" CatalogName="Error processing" Type="Enum" Value="Default" EnumVariants="Default;Release;Debug;Detailed" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="ErrorMessage" Caption="Текст ошибки" Tooltip="[Текст] Возвращает подробную информацию об ошибке в случае некорректного выполнения работы блока" CatalogName="Error processing" Type="Variable" Value="$ErrorMessage" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Principal" Caption="" Tooltip="" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="SendTo" Tooltip="Получатели" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="CopyTo" Tooltip="Получатели в копии" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="BlindCopyTo" Tooltip="Получатели в невидимой копии" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Subject" Tooltip="Тема письма" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="MessageBody" Tooltip="Тело письма" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Attachments" Tooltip="Вложения. Если несколько, подаются через ;" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="SendAsMime" Tooltip="Отправить как HTML" CatalogName="Main properties" Type="Enum" Value="False" EnumVariants="True;False" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Tag" Tooltip="Тег в очереди почтовика" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="DeferUntil" Tooltip="Отложить отправку. Статус задачи при создании всё равно New! Postponed статус нужно ставить руками" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                              </core:PropertiesCollection>
+                         </core:ToolboxItemSettings.Properties>
+                         <core:ToolboxItemSettings.ConnectorsSettings>
+                              <core:ConnectorsSettingsCollection>
+                                   <core:ConnectorSettings Name="Input" Orientation="Top" RelativePosition="0.5,0" MaxInConnections="100" MaxOutConnections="0" Caption="" Color="#000000" />
+                                   <core:ConnectorSettings Name="Error" Orientation="Right" RelativePosition="1,0.5" MaxInConnections="0" MaxOutConnections="1" Caption="Если ошибка" Color="#FF0000" />
+                                   <core:ConnectorSettings Name="InputLeft" Orientation="Left" RelativePosition="0,0.5" MaxInConnections="100" MaxOutConnections="0" Caption="" Color="#000000" />
+                                   <core:ConnectorSettings Name="Next" Orientation="Bottom" RelativePosition="0.5,1" MaxInConnections="0" MaxOutConnections="1" Caption="" Color="#000000" />
+                              </core:ConnectorsSettingsCollection>
+                         </core:ToolboxItemSettings.ConnectorsSettings>
+                    </core:ToolboxItemSettings>
+                    <core:ToolboxItemSettings DisplayName="GetFromOtherMailbox" InternalName="MyBlock34e777d363374a9e8baca604f45ef6e1" FriendlyName="Получить письмо из почтового ящика заказчика" PathStyle="{StaticResource MyBlockRectangle}" PathStyle_DragThumb="{StaticResource MyBlockRectangle_DragThumb}" Width="200" Height="75" PathToImage="ExternalToolboxes\Image\icon_MyBlocks.png" PathToToolboxImage="ExternalToolboxes\Image\icon_MyBlocks.png" ImageType="LeftImage" NoDelete="False" Invisible="False" Proportional="False" Version="40" TextColor="#FF000000">
+                         <core:ToolboxItemSettings.Code><![CDATA[
+function MyBlock34e777d363374a9e8baca604f45ef6e1{{{block_id}}}
+{    
+	$__IsNormalExit = $true;
+    $__Error.Enter("{{{block_native_id}}}", "{{{ErrorLevel}}}","{{{ErrorDirection}}}","{{{ReportLevel}}}","{{{ErrorMessage}}}");
+    $__Error.AddConnectors("{{{connector-Error}}}", "{{{connectorRight}}}", "{{{connectorBottom}}}"); 
+    
+	#__StartPropertiesZone
+$MailBox={{{MailBox}}};
+$Folder={{{Folder}}};
+$Service="{{{Service}}}";
+#__EndPropertiesZone
+	
+    try
+	{
+		#__StartCodeZone
+if([System.IO.Directory]::Exists("\\moscow\itfs\Folders_RPA\Sherpa"))   
+{
+     $global:AlfaRepository = "\\moscow\itfs\Folders_RPA\Sherpa";
+}
+elseif([System.IO.Directory]::Exists("\\nicerts\rpa\SHERPA"))   
+{
+     $global:AlfaRepository = "\\nicerts\rpa\SHERPA";
+}         
+elseif([System.IO.Directory]::Exists("C:\SHERPA"))   
+{
+    $global:AlfaRepository = "C:\SHERPA";
+}
+else 
+{    
+    throw("Недоступны библиотеки");
+} 
+
+Import-Module ($AlfaRepository+"\ScriptsPs\AlfaFunctions.psm1") -Force; 
+Import-Module ($AlfaRepository+"\ScriptsPs\AlfaGlobal.ps1") -Force; 
+SetAlfaGlobal
+
+$SqlLotus = "update dbo.[ln_incoming_email]
+                set[processed] = 1
+            OUTPUT
+                isnull(INSERTED.[id], '') as 'Id' 
+                ,isnull(INSERTED.[delivered_date], '') as 'DeliveredDate' 
+                ,isnull(INSERTED.[principal], '') as 'Princpal'
+                ,isnull(INSERTED.[from_to], '') as 'FromTo'  
+                ,isnull(INSERTED.[copy_to], '') as 'CopyTo'
+                ,isnull(INSERTED.[subject], '') as 'Subject'      
+                ,isnull(INSERTED.[body], '') as 'Body'
+                ,isnull(INSERTED.[attachments], '') as 'Attachments'
+                ,isnull(INSERTED.[links], '') as 'Links'
+                ,isnull(INSERTED.[notes_url], '') as 'NotesUrl'
+                ,isnull(INSERTED.[unid], '') as 'Unid'
+            where id = (select top (1) [id]
+                          from dbo.[ln_incoming_email] WITH (TABLOCKX)
+                        where
+                            [db_name] = '_DBNAME'
+                            and [folder_name] = '_FOLDERNAME'
+                            and [processed] = 0
+                        order by [added])"
+
+$SqlExchange = "update [dbo].[exchange_incoming_email]
+                    set[processed] = 1
+                OUTPUT  
+                    isnull(INSERTED.[id], '') as 'Id' 
+                    ,isnull(INSERTED.[delivered_date], '') as 'DeliveredDate'
+                    ,isnull(INSERTED.[principal], '') as 'Pricipal'
+                    ,isnull(INSERTED.[from_to], '') as 'FromTo'
+                    ,isnull(INSERTED.[send_to], '') as 'SendTo'
+                    ,isnull(INSERTED.[copy_to], '') as 'CopyTo'
+                    ,isnull(INSERTED.[blind_copy_to], '') as 'BlindCopyTo'
+                    ,isnull(INSERTED.[subject], '') as 'Subject'
+                    ,isnull(INSERTED.[body], '') as 'Body'
+                    ,isnull(INSERTED.[bodyalltext], '') as 'BodyAllText'
+                    ,isnull(INSERTED.[bodyhtml], '') as 'BodyHtml'
+                    ,isnull(INSERTED.[attachments], '') as 'Attachments'
+                    ,isnull(INSERTED.[links], '') as 'Links'
+                    ,isnull(INSERTED.[notes_url], '') as 'NotesUrl'
+                    ,isnull(INSERTED.[unid], '') as 'Unid'
+                where id = (select top (1) 
+                                [id]
+                            from dbo.[exchange_incoming_email] WITH (TABLOCKX)
+                            where
+                                [db_name] = '_DBNAME'
+                                and [folder_name] = '_FOLDERNAME'
+                                and [processed] = 0 
+                            order by [added])"
+                            
+if ($Service -eq "Lotus") {
+    $Sql = $SqlLotus.Replace('_DBNAME', $MailBox).Replace('_FOLDERNAME', $Folder); }      
+else {
+    $Sql = $SqlExchange.Replace('_DBNAME', $MailBox).Replace('_FOLDERNAME', $Folder); }      
+
+$Result = $null
+MsSelect -Credentials "" -Server "" -DataBase "" -Sql $Sql -Result([ref]$Result)
+#__EndCodeZone
+	}
+	catch 
+    { 
+		$__IsNormalExit = $false;
+        $__Error.ExceptionCatch($_);
+        return;
+    }
+    finally
+	{
+		if($__IsNormalExit) 
+		{
+		
+	#__StartOutputZone
+{{{Result}}}=$Result;
+#__EndOutputZone
+		
+			$__Error.Quit(); 
+		}
+	}	
+}
+]]></core:ToolboxItemSettings.Code>
+                         <core:ToolboxItemSettings.Properties>
+                              <core:PropertiesCollection>
+                                   <core:Property Name="ErrorLevel" Caption="Уровень обработки" Tooltip="Выбор уровня обработки ошибок. Возможные значения: &quot;Default&quot; - по умолчанию; &quot;Ignore&quot; - ошибки игнорируются; &quot;Handle&quot; - ошибки обрабатываются. Если выбрано значение &quot;Default&quot;, то будет использоваться значение блока &quot;Старт&quot; данной диаграммы" CatalogName="Error processing" Type="Enum" Value="Default" EnumVariants="Default;Ignore;Handle" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="ErrorDirection" Caption="Направление выхода" Tooltip="Выбор направления выхода из блока при возникновении ошибки. Возможные значения: &quot;Default&quot; - по умолчанию; &quot;Right / On Error&quot; - направо или по ошибке; &quot;Bottom&quot; - вниз. Данное свойство позволяет определить направление выхода при возникновении ошибок для блоков не содержащих коннектора &quot;Если ошибка&quot; (например блок &quot;Условие&quot;). Если выбрано значение &quot;Default&quot;, то будет использоваться значение блока &quot;Старт&quot; данной диаграммы" CatalogName="Error processing" Type="Enum" Value="Default" EnumVariants="Default;Right / On Error;Bottom" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="ReportLevel" Caption="Уровень сообщений" Tooltip="Выбор уровня сообщений, которые будут выводить блоки при работе. Возможные значения: &quot;Default&quot; - по умолчанию; &quot;Release&quot; - вывод отключен; &quot;Debug&quot; - вывод основной информации; &quot;Detailed&quot; - вывод подробной информации. Если выбрано значение &quot;Default&quot;, то будет использоваться значение блока &quot;Старт&quot; данной диаграммы" CatalogName="Error processing" Type="Enum" Value="Default" EnumVariants="Default;Release;Debug;Detailed" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="ErrorMessage" Caption="Текст ошибки" Tooltip="[Текст] Возвращает подробную информацию об ошибке в случае некорректного выполнения работы блока" CatalogName="Error processing" Type="Variable" Value="$ErrorMessage" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="MailBox" Tooltip="" CatalogName="Required" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Folder" Tooltip="" CatalogName="Required" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Service" Tooltip="" CatalogName="Main properties" Type="Enum" Value="Exchange" EnumVariants="Lotus;Exchange" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Result" Tooltip="" CatalogName="Output" Type="Variable" Value="$Result" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                              </core:PropertiesCollection>
+                         </core:ToolboxItemSettings.Properties>
+                         <core:ToolboxItemSettings.ConnectorsSettings>
+                              <core:ConnectorsSettingsCollection>
+                                   <core:ConnectorSettings Name="Input" Orientation="Top" RelativePosition="0.5,0" MaxInConnections="100" MaxOutConnections="0" Caption="" Color="#000000" />
+                                   <core:ConnectorSettings Name="Error" Orientation="Right" RelativePosition="1,0.5" MaxInConnections="0" MaxOutConnections="1" Caption="Если ошибка" Color="#FF0000" />
+                                   <core:ConnectorSettings Name="InputLeft" Orientation="Left" RelativePosition="0,0.5" MaxInConnections="100" MaxOutConnections="0" Caption="" Color="#000000" />
+                                   <core:ConnectorSettings Name="Next" Orientation="Bottom" RelativePosition="0.5,1" MaxInConnections="0" MaxOutConnections="1" Caption="" Color="#000000" />
+                              </core:ConnectorsSettingsCollection>
+                         </core:ToolboxItemSettings.ConnectorsSettings>
+                    </core:ToolboxItemSettings>
+                    <core:ToolboxItemSettings DisplayName="SendFromOtherMailbox" InternalName="MyBlock6c9aa306066c44f0878f9455db85bb12" FriendlyName="Отправить письмо из почтового ящика заказчика" PathStyle="{StaticResource MyBlockRectangle}" PathStyle_DragThumb="{StaticResource MyBlockRectangle_DragThumb}" Width="200" Height="75" PathToImage="data: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" PathToToolboxImage="data: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" ImageType="LeftImage" NoDelete="False" Invisible="False" Proportional="False" Version="39" TextColor="#FF000000">
+                         <core:ToolboxItemSettings.Code><![CDATA[
+function MyBlock6c9aa306066c44f0878f9455db85bb12{{{block_id}}}
+{    
+	$__IsNormalExit = $true;
+    $__Error.Enter("{{{block_native_id}}}", "{{{ErrorLevel}}}","{{{ErrorDirection}}}","{{{ReportLevel}}}","{{{ErrorMessage}}}");
+    $__Error.AddConnectors("{{{connector-Error}}}", "{{{connectorRight}}}", "{{{connectorBottom}}}"); 
+    
+	#__StartPropertiesZone
+$MailBox={{{MailBox}}};
+$Principal={{{Principal}}};
+$SendTo={{{SendTo}}};
+$CopyTo={{{CopyTo}}};
+$BlindCopyTo={{{BlindCopyTo}}};
+$Subject={{{Subject}}};
+$Body={{{Body}}};
+$Attachments={{{Attachments}}};
+$SendAsMime="{{{SendAsMime}}}";
+$Id={{{Id}}};
+$ImageInLine={{{ImageInLine}}};
+$Forwarded={{{Forwarded}}};
+$Service="{{{Service}}}";
+#__EndPropertiesZone
+	
+    try
+	{
+		#__StartCodeZone
+if([System.IO.Directory]::Exists("\\moscow\itfs\Folders_RPA\Sherpa"))   
+{
+     $global:AlfaRepository = "\\moscow\itfs\Folders_RPA\Sherpa";
+}
+elseif([System.IO.Directory]::Exists("\\nicerts\rpa\SHERPA"))   
+{
+     $global:AlfaRepository = "\\nicerts\rpa\SHERPA";
+}         
+elseif([System.IO.Directory]::Exists("C:\SHERPA"))   
+{
+    $global:AlfaRepository = "C:\SHERPA";
+}
+else 
+{    
+    throw("Недоступны библиотеки");
+} 
+
+Import-Module ($AlfaRepository+"\ScriptsPs\AlfaFunctions.psm1") -Force; 
+Import-Module ($AlfaRepository+"\ScriptsPs\AlfaGlobal.ps1") -Force; 
+SetAlfaGlobal
+
+$SqlLotus = "insert into dbo.[ln_outgoing_mail]
+                ([id], [db_name], [principal], [send_to], [copy_to], [blind_copy_to], [subject], [body], [attachments], [processed], [send_as_mime])
+            values (
+                '_ID' 
+                ,'_DBNAME' 
+                ,'_PRINCIPAL'
+                ,'_SENDTO'
+                ,'_COPYTO'
+                ,'_BLINDCOPYTO'
+                ,'_SUBJECT'
+                ,'_BODY'
+                ,'_ATTACHMENTS'
+                ,0
+                ,'_MIME')"
+
+$SqlExchange = "insert into dbo.[exchange_outgoing_mail]
+                    ([id], [db_name], [send_to], [copy_to], [blind_copy_to], [subject], [body], [attachments], [attachments_deleted], [processed], [send_as_mime], [imageinline], [forwarded])
+                values (
+                    '_ID' 
+                    ,'_DBNAME' 
+                    ,'_SENDTO'
+                    ,'_COPYTO'
+                    ,'_BLINDCOPYTO'
+                    ,'_SUBJECT'
+                    ,'_BODY'
+                    ,'_ATTACHMENTS'
+                    ,0
+                    ,0
+                    ,'_MIME'
+                    ,'_IMAGEINLINE'
+                    ,'_FORWARDED')"                   
+
+if (($SendTo -eq "") -and ($CopyTo -eq "") -and ($BlindCopyTo -eq "")) {
+    throw("Не указан получатель")}                    
+                    
+if ([System.Convert]::ToBoolean($SendAsMime) -eq $true) { $Mime = 1 }
+else { $Mime = 0 }
+
+if ($Id -eq "") { $Id = [GUID]::NewGuid() }      
+
+if ($Forwarded -eq "") { $Forwarded = [GUID]::Empty }                    
+
+$Subject = $Subject.Replace("''", "qazwsxedc123").Replace("'", "''").Replace("qazwsxedc123", "''")
+
+$Body = $Body.Replace("''", "qazwsxedc123").Replace("'", "''").Replace("qazwsxedc123", "''")                            
+                            
+if ($Service -eq "Lotus") {
+    $Sql = $SqlLotus.Replace('_DBNAME', $MailBox).Replace('_ID', $Id).Replace('_PRINCIPAL', $Principal).Replace('_SENDTO', $SendTo).Replace('_COPYTO', $CopyTo).Replace('_BLINDCOPYTO', $BlindCopyTo).Replace('_SUBJECT', $Subject).Replace('_BODY', $Body).Replace('_ATTACHMENTS', $Attachments).Replace('_MIME', $Mime); }      
+else {
+    $Sql = $SqlExchange.Replace('_DBNAME', $MailBox).Replace('_ID', $Id).Replace('_SENDTO', $SendTo).Replace('_COPYTO', $CopyTo).Replace('_BLINDCOPYTO', $BlindCopyTo).Replace('_SUBJECT', $Subject).Replace('_BODY', $Body).Replace('_ATTACHMENTS', $Attachments).Replace('_MIME', $Mime).Replace('_IMAGEINLINE', $ImageInLine).Replace('_FORWARDED', $Forwarded); }      
+
+MsExecute -Credentials "" -Server "" -DataBase "" -Sql $Sql
+#__EndCodeZone
+	}
+	catch 
+    { 
+		$__IsNormalExit = $false;
+        $__Error.ExceptionCatch($_);
+        return;
+    }
+    finally
+	{
+		if($__IsNormalExit) 
+		{
+		
+	#__StartOutputZone
+
+#__EndOutputZone
+		
+			$__Error.Quit(); 
+		}
+	}	
+}
+]]></core:ToolboxItemSettings.Code>
+                         <core:ToolboxItemSettings.Properties>
+                              <core:PropertiesCollection>
+                                   <core:Property Name="ErrorLevel" Caption="Уровень обработки" Tooltip="Выбор уровня обработки ошибок. Возможные значения: &quot;Default&quot; - по умолчанию; &quot;Ignore&quot; - ошибки игнорируются; &quot;Handle&quot; - ошибки обрабатываются. Если выбрано значение &quot;Default&quot;, то будет использоваться значение блока &quot;Старт&quot; данной диаграммы" CatalogName="Error processing" Type="Enum" Value="Default" EnumVariants="Default;Ignore;Handle" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="ErrorDirection" Caption="Направление выхода" Tooltip="Выбор направления выхода из блока при возникновении ошибки. Возможные значения: &quot;Default&quot; - по умолчанию; &quot;Right / On Error&quot; - направо или по ошибке; &quot;Bottom&quot; - вниз. Данное свойство позволяет определить направление выхода при возникновении ошибок для блоков не содержащих коннектора &quot;Если ошибка&quot; (например блок &quot;Условие&quot;). Если выбрано значение &quot;Default&quot;, то будет использоваться значение блока &quot;Старт&quot; данной диаграммы" CatalogName="Error processing" Type="Enum" Value="Default" EnumVariants="Default;Right / On Error;Bottom" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="ReportLevel" Caption="Уровень сообщений" Tooltip="Выбор уровня сообщений, которые будут выводить блоки при работе. Возможные значения: &quot;Default&quot; - по умолчанию; &quot;Release&quot; - вывод отключен; &quot;Debug&quot; - вывод основной информации; &quot;Detailed&quot; - вывод подробной информации. Если выбрано значение &quot;Default&quot;, то будет использоваться значение блока &quot;Старт&quot; данной диаграммы" CatalogName="Error processing" Type="Enum" Value="Default" EnumVariants="Default;Release;Debug;Detailed" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="ErrorMessage" Caption="Текст ошибки" Tooltip="[Текст] Возвращает подробную информацию об ошибке в случае некорректного выполнения работы блока" CatalogName="Error processing" Type="Variable" Value="$ErrorMessage" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="MailBox" Tooltip="" CatalogName="Required" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Principal" Caption="" Tooltip="Только для Lotus" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="SendTo" Tooltip="Можно перечислить несколько через ," CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="CopyTo" Tooltip="Можно перечислить несколько через ," CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="BlindCopyTo" Tooltip="Можно перечислить несколько через ," CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Subject" Tooltip="" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Body" Tooltip="" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Attachments" Tooltip="Полный путь к файлу вложению,  можно перечислить несколько через ;" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="SendAsMime" Tooltip="Отправить как HTML" CatalogName="Main properties" Type="Enum" Value="False" EnumVariants="True;False" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Id" Tooltip="" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="ImageInLine" Caption="" Tooltip="Только для Exchange" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Forwarded" Caption="" Tooltip="Только для Exchange. Id письма, на которое требуется ответить" CatalogName="Main properties" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Service" Tooltip="" CatalogName="Main properties" Type="Enum" Value="Exchange" EnumVariants="Lotus;Exchange" Visible="True" DefaultValue="&quot;&quot;" />
+                              </core:PropertiesCollection>
+                         </core:ToolboxItemSettings.Properties>
+                         <core:ToolboxItemSettings.ConnectorsSettings>
+                              <core:ConnectorsSettingsCollection>
+                                   <core:ConnectorSettings Name="Input" Orientation="Top" RelativePosition="0.5,0" MaxInConnections="100" MaxOutConnections="0" Caption="" Color="#000000" />
+                                   <core:ConnectorSettings Name="Error" Orientation="Right" RelativePosition="1,0.5" MaxInConnections="0" MaxOutConnections="1" Caption="Если ошибка" Color="#FF0000" />
+                                   <core:ConnectorSettings Name="InputLeft" Orientation="Left" RelativePosition="0,0.5" MaxInConnections="100" MaxOutConnections="0" Caption="" Color="#000000" />
+                                   <core:ConnectorSettings Name="Next" Orientation="Bottom" RelativePosition="0.5,1" MaxInConnections="0" MaxOutConnections="1" Caption="" Color="#000000" />
+                              </core:ConnectorsSettingsCollection>
+                         </core:ToolboxItemSettings.ConnectorsSettings>
+                    </core:ToolboxItemSettings>
+                    <core:ToolboxItemSettings DisplayName="MoveFromOtherMailbox" InternalName="MyBlockc16c0bef2d134b4985ccaad6a045f156" FriendlyName="Переместить письмо в почтовом ящике заказчика" PathStyle="{StaticResource MyBlockRectangle}" PathStyle_DragThumb="{StaticResource MyBlockRectangle_DragThumb}" Width="200" Height="75" PathToImage="ExternalToolboxes\Image\icon_MyBlocks.png" PathToToolboxImage="ExternalToolboxes\Image\icon_MyBlocks.png" ImageType="LeftImage" NoDelete="False" Invisible="False" Proportional="False" Version="16" TextColor="#FF000000">
+                         <core:ToolboxItemSettings.Code><![CDATA[
+function MyBlockc16c0bef2d134b4985ccaad6a045f156{{{block_id}}}
+{    
+	$__IsNormalExit = $true;
+    $__Error.Enter("{{{block_native_id}}}", "{{{ErrorLevel}}}","{{{ErrorDirection}}}","{{{ReportLevel}}}","{{{ErrorMessage}}}");
+    $__Error.AddConnectors("{{{connector-Error}}}", "{{{connectorRight}}}", "{{{connectorBottom}}}"); 
+    
+	#__StartPropertiesZone
+$MailBox={{{MailBox}}};
+$Unid={{{Unid}}};
+$FolderOut={{{FolderOut}}};
+$FolderIn={{{FolderIn}}};
+$Service="{{{Service}}}";
+#__EndPropertiesZone
+	
+    try
+	{
+		#__StartCodeZone
+if([System.IO.Directory]::Exists("\\moscow\itfs\Folders_RPA\Sherpa"))   
+{
+     $global:AlfaRepository = "\\moscow\itfs\Folders_RPA\Sherpa";
+}
+elseif([System.IO.Directory]::Exists("\\nicerts\rpa\SHERPA"))   
+{
+     $global:AlfaRepository = "\\nicerts\rpa\SHERPA";
+}         
+elseif([System.IO.Directory]::Exists("C:\SHERPA"))   
+{
+    $global:AlfaRepository = "C:\SHERPA";
+}
+else 
+{    
+    throw("Недоступны библиотеки");
+} 
+
+Import-Module ($AlfaRepository+"\ScriptsPs\AlfaFunctions.psm1") -Force; 
+Import-Module ($AlfaRepository+"\ScriptsPs\AlfaGlobal.ps1") -Force; 
+SetAlfaGlobal
+
+$SqlLotus = "insert into dbo.[ln_moving_email]
+                ([id], [db_name], [unid], [folder_out], [folder_in])
+            values (
+                '_ID'
+                ,'_DBNAME'
+                ,'_UNID'
+                ,'_FOLDEROUT'
+                ,'_FOLDERIN')"
+
+$SqlExchange = "insert into dbo.[exchange_moving_email]
+                    ([id], [db_name], [unid], [folder_out], [folder_in])
+                values (
+                    '_ID'
+                    ,'_DBNAME'
+                    ,'_UNID'
+                    ,'_FOLDEROUT'
+                    ,'_FOLDERIN')"
+
+if (($FolderOut -eq "") -and ($FolderIn -eq "") -and ($Unid -eq "")) {
+    throw("Пустые обязательные параметры")}                        
+
+$Id = [GUID]::NewGuid()       
+
+if ($Service -eq "Lotus") {
+    $Sql = $SqlLotus.Replace('_DBNAME', $MailBox).Replace('_ID', $Id).Replace('_UNID', $Unid).Replace('_FOLDEROUT', $FolderOut).Replace('_FOLDERIN', $FolderIn); }      
+else {
+    $Sql = $SqlExchange.Replace('_DBNAME', $MailBox).Replace('_ID', $Id).Replace('_UNID', $Unid).Replace('_FOLDEROUT', $FolderOut).Replace('_FOLDERIN', $FolderIn); }      
+
+MsExecute -Credentials "" -Server "" -DataBase "" -Sql $Sql
+#__EndCodeZone
+	}
+	catch 
+    { 
+		$__IsNormalExit = $false;
+        $__Error.ExceptionCatch($_);
+        return;
+    }
+    finally
+	{
+		if($__IsNormalExit) 
+		{
+		
+	#__StartOutputZone
+
+#__EndOutputZone
+		
+			$__Error.Quit(); 
+		}
+	}	
+}
+]]></core:ToolboxItemSettings.Code>
+                         <core:ToolboxItemSettings.Properties>
+                              <core:PropertiesCollection>
+                                   <core:Property Name="ErrorLevel" Caption="Уровень обработки" Tooltip="Выбор уровня обработки ошибок. Возможные значения: &quot;Default&quot; - по умолчанию; &quot;Ignore&quot; - ошибки игнорируются; &quot;Handle&quot; - ошибки обрабатываются. Если выбрано значение &quot;Default&quot;, то будет использоваться значение блока &quot;Старт&quot; данной диаграммы" CatalogName="Error processing" Type="Enum" Value="Default" EnumVariants="Default;Ignore;Handle" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="ErrorDirection" Caption="Направление выхода" Tooltip="Выбор направления выхода из блока при возникновении ошибки. Возможные значения: &quot;Default&quot; - по умолчанию; &quot;Right / On Error&quot; - направо или по ошибке; &quot;Bottom&quot; - вниз. Данное свойство позволяет определить направление выхода при возникновении ошибок для блоков не содержащих коннектора &quot;Если ошибка&quot; (например блок &quot;Условие&quot;). Если выбрано значение &quot;Default&quot;, то будет использоваться значение блока &quot;Старт&quot; данной диаграммы" CatalogName="Error processing" Type="Enum" Value="Default" EnumVariants="Default;Right / On Error;Bottom" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="ReportLevel" Caption="Уровень сообщений" Tooltip="Выбор уровня сообщений, которые будут выводить блоки при работе. Возможные значения: &quot;Default&quot; - по умолчанию; &quot;Release&quot; - вывод отключен; &quot;Debug&quot; - вывод основной информации; &quot;Detailed&quot; - вывод подробной информации. Если выбрано значение &quot;Default&quot;, то будет использоваться значение блока &quot;Старт&quot; данной диаграммы" CatalogName="Error processing" Type="Enum" Value="Default" EnumVariants="Default;Release;Debug;Detailed" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="ErrorMessage" Caption="Текст ошибки" Tooltip="[Текст] Возвращает подробную информацию об ошибке в случае некорректного выполнения работы блока" CatalogName="Error processing" Type="Variable" Value="$ErrorMessage" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="MailBox" Tooltip="" CatalogName="Required" Type="Variable" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Unid" Tooltip="" CatalogName="Required" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="FolderOut" Tooltip="" CatalogName="Required" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="FolderIn" Tooltip="" CatalogName="Required" Type="Expression" Value="" EnumVariants="" Visible="True" DefaultValue="&quot;&quot;" />
+                                   <core:Property Name="Service" Tooltip="" CatalogName="Main properties" Type="Enum" Value="Exchange" EnumVariants="Lotus;Exchange" Visible="True" DefaultValue="&quot;&quot;" />
+                              </core:PropertiesCollection>
+                         </core:ToolboxItemSettings.Properties>
+                         <core:ToolboxItemSettings.ConnectorsSettings>
+                              <core:ConnectorsSettingsCollection>
+                                   <core:ConnectorSettings Name="Input" Orientation="Top" RelativePosition="0.5,0" MaxInConnections="100" MaxOutConnections="0" Caption="" Color="#000000" />
+                                   <core:ConnectorSettings Name="Error" Orientation="Right" RelativePosition="1,0.5" MaxInConnections="0" MaxOutConnections="1" Caption="Если ошибка" Color="#FF0000" />
+                                   <core:ConnectorSettings Name="InputLeft" Orientation="Left" RelativePosition="0,0.5" MaxInConnections="100" MaxOutConnections="0" Caption="" Color="#000000" />
+                                   <core:ConnectorSettings Name="Next" Orientation="Bottom" RelativePosition="0.5,1" MaxInConnections="0" MaxOutConnections="1" Caption="" Color="#000000" />
+                              </core:ConnectorsSettingsCollection>
+                         </core:ToolboxItemSettings.ConnectorsSettings>
+                    </core:ToolboxItemSettings>
+               </core:ToolboxItemSettingsCollection>
+          </core:ToolboxSettings.ItemsSettings>
+     </core:ToolboxSettings>
+</ResourceDictionary>

@@ -1,0 +1,9 @@
+{
+  "UpdateCheckMode": "ByDistributive" /*режим проверки обновлений: NeedToInit, NoCheck, ByYandexDisk, ByDistributive*/,
+  "Version": "2023.08.11",
+  "YandexFolderUrl": "https://disk.yandex.ru/d/EfEmf5_mvOvG6w/BluePrism",
+  "YandexVersionRegEx": "(?<version>\\d{4}\\.\\d{2}\\.\\d{2}(\\[\\d\\])?)\\.txt" /*рег.выражение для поиска в yandex-папке txt файла имя которого это последняя версия, по умолчанию типа: 2023.04.25.txt или 2023.04.25[2].txt*/,
+  "TimeOutMilliseconds": 5000 /*timeout ожидания ответа по yandex ссылке в миллисекундах*/,
+  "DistributiveOptionsPath": "\\\\nicerts\\Rpa\\!Sherpa\\Exe\\Конвертер\\BluePrismCnv\\app_data\\updateCheckerOptions.json",
+  "ReleaseNotes": "Release Notes:"
+}

@@ -1,0 +1,34 @@
+//#imports: System.Data, System.Text.RegularExpressions, Helpers
+
+{
+  "IsSimplifyTryCatch": true,
+  "BlocksCorrectors": [
+  {
+    "InternalName": "OrchCreateTaskFromTable",
+    "Properties": [
+    {"Name":"AddNameDateTime", "Value": "false"},
+    {"Name":"IndexColumnForName",
+     "Value": <<context => {
+      if (!string.IsNullOrEmpty(context.Value) && context.Value != "0")
+      return null;
+      var tableVarName = context.Props["TableParameters"].Value;
+      if (string.IsNullOrEmpty(tableVarName))
+      return null;
+      var varValue = context.GetVarValue(tableVarName);
+      var colName = varValue != null && varValue is DataTable table && table.Columns.Contains("RKName")
+        ? "RKName"
+        : "?????";
+      return $"{tableVarName}.Columns[\"{colName}\"].Ordinal";
+      }>>
+    }
+    ]
+  },
+  {
+    "InternalName": "OrchGetLastTask",
+    "Properties": [
+      {"Name":"MarkInProgress", "Value": "true"},
+      {"Name":"ErrorWhenZeroTasks", "Value": "false"}
+    ]
+  }
+  ]
+}

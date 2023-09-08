@@ -1,0 +1,4 @@
+﻿21.06.2023 03:23:10 - Started : 
+21.06.2023 03:23:10 - SimpleWait45sec -> Пауза(e944a0c7-2bcd-41ac-98ac-787c878de5f6) : Ожидание 45 Seconds
+21.06.2023 03:23:56 - SimpleWait45sec -> Лог(730750c0-0a82-4bcb-9ff3-336bcd3934fd) : Ожидали 45 секунд
+21.06.2023 03:23:56 - SimpleWait45sec -> Конец(1ead8ef1-b67d-49ca-ac5e-38739efbc9bd) : 00:00:45
